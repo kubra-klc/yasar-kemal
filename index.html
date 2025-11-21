@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yaşar Kemal: Anadolu'nun Destan Yazarı</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter (Genel metin) ve Playfair Display (Başlıklar için zarif serif) -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Değişkenleri (Custom Properties) ile tema renklerini ve geçişleri tanımlama */
+        :root {
+            --color-primary: #8C4B3D; /* Derin Toprak Kırmızısı/Kahverengisi */
+            --color-secondary: #4A90E2; /* Destansı Mavi */
+            --color-text: #333333;
+            --color-bg-light: #F7F5F3; /* Açık Bej/Krem */
+            --color-bg-dark: #1E1E1E;
+            --transition-duration: 0.4s;
+        }
+
+        /* Genel Stiller ve Fontlar */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-text);
+            background-color: var(--color-bg-light);
+            line-height: 1.75;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--color-primary);
+        }
+
+        /* Parallax Benzeri Arka Plan Efekti */
+        .parallax-bg {
+            background-image: url('https://placehold.co/1920x1080/4A90E2/ffffff?text=Cukurova+Manzarasi'); /* Gerçekte Çukurova manzarası görseli kullanılmalı */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 50vh;
+            filter: grayscale(40%); /* Hafif sanatsal filtre */
+            transition: filter var(--transition-duration) ease-in-out;
+        }
+        .parallax-bg:hover {
+            filter: grayscale(0%);
+        }
+
+        /* Başlıkta Büyütme Efekti */
+        .hero-title {
+            transition: transform 0.6s ease-out;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        }
+        .hero-title:hover {
+            transform: scale(1.05);
+        }
+
+        /* Kitap Kartı Efektleri */
+        .book-card {
+            transition: transform var(--transition-duration) ease, box-shadow var(--transition-duration) ease;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            border-left: 5px solid transparent;
+        }
+        .book-card:hover {
+            transform: translateY(-8px) rotate(-1deg);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            border-left-color: var(--color-secondary);
+        }
+
+        /* Timeline (Zaman Çizelgesi) Stili */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 0;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--color-primary);
+            border: 2px solid var(--color-bg-light);
+            z-index: 10;
+            transition: transform var(--transition-duration);
+        }
+        .timeline-item:hover::before {
+            transform: scale(1.5);
+            background-color: var(--color-secondary);
+        }
+
+        /* Navigasyon Aktif Durumu */
+        .nav-link.active {
+            color: var(--color-secondary);
+            border-bottom: 2px solid var(--color-secondary);
+        }
+    </style>
+</head>
+<body class="scroll-smooth">
+
+    <!-- Sabit Başlık/Navigasyon (Sticky Header) -->
+    <header id="header" class="sticky top-0 z-50 bg-white bg-opacity-95 shadow-md backdrop-blur-sm transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-2xl font-extrabold text-gray-800 hover:text-red-700 transition duration-300">Yaşar Kemal</h1>
+            <nav class="space-x-4">
+                <a href="#hayati" class="nav-link text-gray-600 hover:text-red-700 transition duration-300 px-3 py-2 text-sm md:text-base">Hayatı</a>
+                <a href="#eserleri" class="nav-link text-gray-600 hover:text-red-700 transition duration-300 px-3 py-2 text-sm md:text-base">Eserleri</a>
+                <a href="#destanlari" class="nav-link text-gray-600 hover:text-red-700 transition duration-300 px-3 py-2 text-sm md:text-base">Destanları</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 1. Hero Bölümü - Açılış ve Etkileyici Görsel -->
+    <section id="hero" class="parallax-bg flex items-center justify-center text-white p-8 md:p-20">
+        <div class="text-center bg-black bg-opacity-40 p-6 md:p-10 rounded-xl max-w-4xl shadow-2xl">
+            <!-- Başlıkta Büyütme Efekti için custom class -->
+            <h2 class="hero-title text-5xl md:text-7xl font-bold mb-4 tracking-tight">
+                "O iyi insanlar, o güzel atlara binip çekip gittiler."
+            </h2>
+            <p class="text-xl md:text-2xl font-light italic">
+                — Yaşar Kemal
+            </p>
+            <a href="#hayati" class="mt-8 inline-block px-8 py-3 bg-[var(--color-primary)] text-white font-semibold rounded-full shadow-lg hover:bg-red-700 transition duration-500 ease-in-out transform hover:scale-105">
+                Yaşam Öyküsünü Keşfet
+            </a>
+        </div>
+    </section>
+
+    <!-- 2. Hayatı - Zaman Çizelgesi (Timeline) -->
+    <section id="hayati" class="py-16 md:py-24 bg-[var(--color-bg-light)]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-12">Anadolu'nun Kelamı: Yaşam Öyküsü</h2>
+
+            <!-- Dikey Zaman Çizelgesi Konteyneri -->
+            <div class="max-w-3xl mx-auto relative pl-8 md:pl-16 border-l-2 border-gray-300">
+                
+                <!-- Her bir timeline öğesi -->
+                <div class="timeline-item mb-10 p-4 bg-white rounded-lg shadow-lg relative hover:shadow-xl">
+                    <h3 class="text-xl font-bold mb-2 text-[var(--color-primary)]">1923: Doğum ve Çocukluk</h3>
+                    <p class="text-gray-700">Adana'nın Hemite (Gökçedam) köyünde Kürt kökenli bir ailenin çocuğu olarak dünyaya geldi. Asıl adı Kemal Sadık Gökçeli'dir. Çocukluğu Çukurova'nın zengin kültürü ve zorlu yaşam koşulları içinde geçti.</p>
+                </div>
+
+                <div class="timeline-item mb-10 p-4 bg-white rounded-lg shadow-lg relative hover:shadow-xl">
+                    <h3 class="text-xl font-bold mb-2 text-[var(--color-primary)]">1951: Gazetecilik Yılları</h3>
+                    <p class="text-gray-700">İstanbul'a yerleşti ve Cumhuriyet gazetesinde röportaj yazarı olarak çalışmaya başladı. Bu dönemde Anadolu'nun gerçeklerini, özellikle Çukurova'daki toprak ağalığı sorununu kaleme aldı.</p>
+                </div>
+
+                <div class="timeline-item mb-10 p-4 bg-white rounded-lg shadow-lg relative hover:shadow-xl">
+                    <h3 class="text-xl font-bold mb-2 text-[var(--color-primary)]">1955: İnce Memed ve Şöhret</h3>
+                    <p class="text-gray-700">İlk romanı *İnce Memed*'i yayımladı. Eser, kısa sürede büyük yankı uyandırdı ve ona yurt içinde ve yurt dışında büyük ün kazandırdı. Bu roman, Anadolu efsanelerini modern roman tekniğiyle birleştirmesinin en güçlü örneğidir.</p>
+                </div>
+
+                <div class="timeline-item mb-10 p-4 bg-white rounded-lg shadow-lg relative hover:shadow-xl">
+                    <h3 class="text-xl font-bold mb-2 text-[var(--color-primary)]">1970'ler: Destan Üçlemeleri</h3>
+                    <p class="text-gray-700">*Ortadirek*, *Yer Demir Gök Bakır* ve *Ölmez Otu* gibi destansı eserlerini yayımlayarak yazarlık kariyerinin doruğuna ulaştı. Eserlerinde insan-doğa-toplum çatışmasını epik bir dille ele aldı.</p>
+                </div>
+
+                <div class="timeline-item mb-10 p-4 bg-white rounded-lg shadow-lg relative hover:shadow-xl">
+                    <h3 class="text-xl font-bold mb-2 text-[var(--color-primary)]">2015: Veda</h3>
+                    <p class="text-gray-700">İstanbul'da tedavi gördüğü hastanede hayatını kaybetti. Edebiyatımıza bıraktığı zengin miras, onu Türkiye'nin ve dünyanın en önemli romancıları arasına yerleştirdi.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Eserleri - Kitaplık (Grid ve Hover Efektli) -->
+    <section id="eserleri" class="py-16 md:py-24 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-16">Seçme Eserleri ve Destanları</h2>
+            
+            <!-- Kitap Kartları Grid Düzeni (Responsive) -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+                
+                <!-- Kitap Kartı Örneği 1: İnce Memed -->
+                <div class="book-card p-4 rounded-lg bg-white shadow-xl flex flex-col items-center text-center">
+                    <img src="https://placehold.co/150x230/8C4B3D/ffffff?text=Ince+Memed" alt="İnce Memed Kitap Kapağı" class="w-2/3 h-auto rounded-lg shadow-md mb-4 object-cover">
+                    <h4 class="text-xl font-bold text-[var(--color-secondary)] mb-1">İnce Memed (1955)</h4>
+                    <p class="text-sm text-gray-500 italic">Destan Serisi</p>
+                    <p class="text-xs text-gray-600 mt-2">Zulme karşı duran bir Anadolu eşkıyasının efsanevi hikayesi.</p>
+                </div>
+
+                <!-- Kitap Kartı Örneği 2: Yer Demir Gök Bakır -->
+                <div class="book-card p-4 rounded-lg bg-white shadow-xl flex flex-col items-center text-center">
+                    <img src="https://placehold.co/150x230/4A90E2/ffffff?text=Yer+Demir+Gok+Bakir" alt="Yer Demir Gök Bakır Kitap Kapağı" class="w-2/3 h-auto rounded-lg shadow-md mb-4 object-cover">
+                    <h4 class="text-xl font-bold text-[var(--color-secondary)] mb-1">Yer Demir Gök Bakır (1963)</h4>
+                    <p class="text-sm text-gray-500 italic">Anadolu Üçlemesi</p>
+                    <p class="text-xs text-gray-600 mt-2">Yoksulluk içinde efsanelere sığınan köylülerin dramı.</p>
+                </div>
+
+                <!-- Kitap Kartı Örneği 3: Binboğalar Efsanesi -->
+                <div class="book-card p-4 rounded-lg bg-white shadow-xl flex flex-col items-center text-center">
+                    <img src="https://placehold.co/150x230/333333/ffffff?text=Binbogalar+Efsanesi" alt="Binboğalar Efsanesi Kitap Kapağı" class="w-2/3 h-auto rounded-lg shadow-md mb-4 object-cover">
+                    <h4 class="text-xl font-bold text-[var(--color-secondary)] mb-1">Binboğalar Efsanesi (1971)</h4>
+                    <p class="text-sm text-gray-500 italic">Roman</p>
+                    <p class="text-xs text-gray-600 mt-2">Göçebe Türkmenlerin yerleşik hayata geçiş mücadelesi.</p>
+                </div>
+                
+                <!-- Kitap Kartı Örneği 4: Deniz Küstü -->
+                <div class="book-card p-4 rounded-lg bg-white shadow-xl flex flex-col items-center text-center">
+                    <img src="https://placehold.co/150x230/737373/ffffff?text=Deniz+Kustu" alt="Deniz Küstü Kitap Kapağı" class="w-2/3 h-auto rounded-lg shadow-md mb-4 object-cover">
+                    <h4 class="text-xl font-bold text-[var(--color-secondary)] mb-1">Deniz Küstü (1978)</h4>
+                    <p class="text-sm text-gray-500 italic">Roman</p>
+                    <p class="text-xs text-gray-600 mt-2">İstanbul'un kenar mahallelerinde geçen hüzünlü bir deniz hikayesi.</p>
+                </div>
+                
+                <!-- Diğer Kitap Kartları için yer tutucu -->
+                <div class="book-card p-4 rounded-lg bg-white shadow-xl flex flex-col items-center text-center">
+                    <img src="https://placehold.co/150x230/8C4B3D/ffffff?text=Teneke" alt="Teneke Kitap Kapağı" class="w-2/3 h-auto rounded-lg shadow-md mb-4 object-cover">
+                    <h4 class="text-xl font-bold text-[var(--color-secondary)] mb-1">Teneke (1955)</h4>
+                    <p class="text-sm text-gray-500 italic">Roman</p>
+                    <p class="text-xs text-gray-600 mt-2">İlk atama genç bir kaymakamın bürokrasiyle mücadelesi.</p>
+                </div>
+                
+                <div class="book-card p-4 rounded-lg bg-white shadow-xl flex flex-col items-center text-center">
+                    <img src="https://placehold.co/150x230/4A90E2/ffffff?text=Yusufçuk+Yusuf" alt="Yusufçuk Yusuf Kitap Kapağı" class="w-2/3 h-auto rounded-lg shadow-md mb-4 object-cover">
+                    <h4 class="text-xl font-bold text-[var(--color-secondary)] mb-1">Yusufçuk Yusuf (1985)</h4>
+                    <p class="text-sm text-gray-500 italic">Roman</p>
+                    <p class="text-xs text-gray-600 mt-2">Destan üçlemesinin son kitabı, umut ve kırılganlık.</p>
+                </div>
+                
+                <div class="book-card p-4 rounded-lg bg-white shadow-xl flex flex-col items-center text-center">
+                    <img src="https://placehold.co/150x230/333333/ffffff?text=Huy+Defteri" alt="Huy Defteri Kitap Kapağı" class="w-2/3 h-auto rounded-lg shadow-md mb-4 object-cover">
+                    <h4 class="text-xl font-bold text-[var(--color-secondary)] mb-1">Huy Defteri (1991)</h4>
+                    <p class="text-sm text-gray-500 italic">Öykü</p>
+                    <p class="text-xs text-gray-600 mt-2">Toplumun sıradan insanlarının sıra dışı halleri.</p>
+                </div>
+                
+                <div class="book-card p-4 rounded-lg bg-white shadow-xl flex flex-col items-center text-center">
+                    <img src="https://placehold.co/150x230/737373/ffffff?text=Demirciler+Carsisi+Cinayeti" alt="Demirciler Çarşısı Cinayeti Kitap Kapağı" class="w-2/3 h-auto rounded-lg shadow-md mb-4 object-cover">
+                    <h4 class="text-xl font-bold text-[var(--color-secondary)] mb-1">Demirciler Çarşısı Cinayeti (1974)</h4>
+                    <p class="text-sm text-gray-500 italic">Roman</p>
+                    <p class="text-xs text-gray-600 mt-2">Bir pamuk ağası cinayeti üzerinden değişen toplum.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Destanları - Özel Vurgu Bölümü -->
+    <section id="destanlari" class="py-16 md:py-24 bg-[var(--color-primary)] text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-12 text-yellow-300">İnce Memed: Dörtleme ve Efsane</h2>
+            
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+                <div class="lg:w-1/2">
+                    <p class="text-lg mb-6">
+                        Yaşar Kemal'in başyapıtı olan **İnce Memed** dörtlemesi, sadece bir roman dizisi değil, aynı zamanda Anadolu halkının zulme karşı direnişinin modern bir destanıdır. Yazarın kendisine dünya çapında ün getiren bu seri, toprağa, insana ve adalete olan inancın en güçlü ifadesidir.
+                    </p>
+                    <ul class="space-y-3 list-disc list-inside text-gray-200 text-base">
+                        <li><strong class="text-yellow-300">Destansı Dil:</strong> Bölgesel efsaneleri ve masalları modern roman teknikleriyle harmanlar.</li>
+                        <li><strong class="text-yellow-300">Toplumsal Eleştiri:</strong> Ağalık sistemi, yoksulluk ve bürokratik zulmü sert bir dille eleştirir.</li>
+                        <li><strong class="text-yellow-300">Evrensel Tema:</strong> Bireyin özgürlük arayışı ve umudu evrensel bir düzlemde işler.</li>
+                    </ul>
+                </div>
+                
+                <div class="lg:w-1/2 flex justify-center space-x-4 md:space-x-8 mt-8 lg:mt-0">
+                    <!-- Kitap Kapakları Dizilimi (Küçükten Büyüğe Animasyonlu) -->
+                    <img src="https://placehold.co/120x180/D97706/ffffff?text=IM+1" alt="İnce Memed Cilt 1" class="w-16 md:w-24 rounded-lg shadow-2xl transform hover:scale-110 transition duration-500">
+                    <img src="https://placehold.co/140x210/FBBF24/333333?text=IM+2" alt="İnce Memed Cilt 2" class="w-20 md:w-28 rounded-lg shadow-2xl transform hover:scale-110 transition duration-500 delay-100">
+                    <img src="https://placehold.co/160x240/FCD34D/333333?text=IM+3" alt="İnce Memed Cilt 3" class="w-24 md:w-32 rounded-lg shadow-2xl transform hover:scale-110 transition duration-500 delay-200">
+                    <img src="https://placehold.co/180x270/FDE68A/333333?text=IM+4" alt="İnce Memed Cilt 4" class="w-28 md:w-36 rounded-lg shadow-2xl transform hover:scale-110 transition duration-500 delay-300">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 5. Footer - Telif ve Bağlantı -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-4">
+                "Bir yazarın yaşamı, eserlerinin yaşamı kadardır."
+            </p>
+            <p class="text-sm text-gray-400">
+                &copy; 2024 Yaşar Kemal Sayfası. Tüm hakları saklıdır.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript - Kaydırma ve Navigasyon Efektleri -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('header');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section');
+
+            // Kaydırma sırasında hangi bölümün aktif olduğunu belirleme
+            const updateActiveNav = () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - header.offsetHeight - 50; // Başlık yüksekliğini ve bir miktar boşluğu çıkar
+                    if (scrollY >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            };
+
+            // Kaydırma olay dinleyicisi
+            window.addEventListener('scroll', () => {
+                updateActiveNav();
+            });
+            
+            // Sayfa yüklendiğinde aktif navigasyonu ayarla
+            updateActiveNav();
+        });
+    </script>
+
+</body>
+</html>
